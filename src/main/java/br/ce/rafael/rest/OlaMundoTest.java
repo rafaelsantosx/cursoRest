@@ -24,7 +24,7 @@ public class OlaMundoTest {
 	public void testeOlaMundo2() {
 		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");	
 		Assert.assertTrue(response.statusCode() == 200);
-		Assert.assertEquals("200", response.getStatusCode());
+		Assert.assertEquals(200, response.getStatusCode());
 		}
 	
 	@Test
@@ -33,4 +33,13 @@ public class OlaMundoTest {
 		Assert.assertTrue(response.getBody().asString().equals("Ola Mundo!"));
 		
 		}
+	
+	@Test
+	public void devoConhecerOutrasFormasRestAssured() {
+		RestAssured.get("http://restapi.wcaquino.me/ola").then().statusCode(201);
+		
+	}
+	
+	
 }
+
