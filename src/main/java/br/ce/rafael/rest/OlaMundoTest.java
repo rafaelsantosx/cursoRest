@@ -1,5 +1,7 @@
 package br.ce.rafael.rest;
 
+import static io.restassured.RestAssured.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class OlaMundoTest {
 
 	@Test
 	public void testeOlaMundo() {
-		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");	
+		Response response = request(Method.GET, "http://restapi.wcaquino.me/ola");	
 		Assert.assertTrue(response.getBody().asString().equals("Ola Mundo!"));
 		Assert.assertTrue(response.statusCode() == 200);
 		Assert.assertTrue("O status code deveria ser 200", response.statusCode() == 200);
@@ -22,21 +24,26 @@ public class OlaMundoTest {
 	}
 	@Test
 	public void testeOlaMundo2() {
-		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");	
+		Response response = request(Method.GET, "http://restapi.wcaquino.me/ola");	
 		Assert.assertTrue(response.statusCode() == 200);
 		Assert.assertEquals(200, response.getStatusCode());
 		}
 	
 	@Test
 	public void testeOlaMundo3() {
-		Response response = RestAssured.request(Method.GET, "http://restapi.wcaquino.me/ola");	
+		Response response = request(Method.GET, "http://restapi.wcaquino.me/ola");	
 		Assert.assertTrue(response.getBody().asString().equals("Ola Mundo!"));
 		
 		}
 	
 	@Test
 	public void devoConhecerOutrasFormasRestAssured() {
-		RestAssured.get("http://restapi.wcaquino.me/ola").then().statusCode(201);
+//		RestAssured.get("http://restapi.wcaquino.me/ola").then().statusCode(200);
+		get("http://restapi.wcaquino.me/ola").then().statusCode(200);
+		
+
+		
+		
 		
 	}
 	
